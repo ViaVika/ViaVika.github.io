@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
     <title>ViaVika - Voice Expense Tracker, Fuel Hub & Life Sorter</title>
 
     <!-- Tailwind CSS -->
@@ -1469,6 +1475,15 @@ Generated via *ViaVika App* 🚀`;
         function capitalize(str) {
             return str.charAt(0).toUpperCase() + str.slice(1);
         }
+    </script>
+    <script>
+      // Installable/offline app shell support. Existing app data remains in this browser's localStorage.
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./sw.js")
+            .catch((error) => console.warn("ViaVika offline setup failed:", error));
+        });
+      }
     </script>
 </body>
 </html>
